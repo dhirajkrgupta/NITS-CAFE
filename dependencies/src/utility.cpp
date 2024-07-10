@@ -4,18 +4,17 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
-#include <windows.h> // For Sleep() function
+#include <cstdlib>
 #include <utility.h>
-// #include <customerdetails.h>
-
-
 
 void clearConsole()
 {
+#ifdef _WIN32
     system("cls");
-    // system("clear"); for macOS
+#else
+    system("clear");
+#endif
 }
-
 
 string generateID()
 {
@@ -87,7 +86,7 @@ string getDate()
     cout << "Date(dd/mm/yyyy): ";
     string input;
     getline(cin, input);
-    if (input.empty()) 
+    if (input.empty())
     {
         getline(cin, input);
     }
@@ -133,9 +132,8 @@ string getDate()
 
 void pauseProgram()
 {
-    Sleep(500);
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
 }
-
 
 void makeReservation(Reservations &r)
 {

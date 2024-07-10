@@ -1,11 +1,6 @@
 #include <iostream>
 #include <string>
 #include <ctime>
-// #include <cstdlib>
-// #include <cctype>
-
-// #include <customerdetails.h>
-// #include <bill.h>
 #include <reservations.h>
 #include <menu.h>
 #include <order.h>
@@ -68,8 +63,6 @@ cafe:
     {
         string name = r.getCustomerDetails(ID)->name;
         string date = r.getCustomerDetails(ID)->date;
-        // time_t t = time(NULL);
-        // struct tm *now = localtime(&t);
         cout << "Welcome " << name << "                                            " << date << endl;
     menu:
         Menu menu;
