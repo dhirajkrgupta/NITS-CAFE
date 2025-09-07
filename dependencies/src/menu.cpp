@@ -1,6 +1,6 @@
-#include <menu.h>
+#include "../include/menu.h"
 #include <iostream>
-#include <utility.h>
+#include "include/utility.h"
 
 MenuItem::MenuItem(string n, double p, string d) : name(n), price(p), description(d) {} // constructor
 

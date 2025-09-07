@@ -2,7 +2,7 @@
 #include <vector>
 #include <string>
 #include <iomanip>
-#include <bill.h>
+#include "../include/bill.h"
 using namespace std;
 
 BillItem::BillItem(int serial, const string &itemName, int itemQuantity, double itemCost) : serialNumber(serial), name(itemName), quantity(itemQuantity), costPerItem(itemCost) {}

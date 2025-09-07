@@ -13,13 +13,7 @@
 using namespace std;
 using namespace sql;
 
-// Assuming you have this struct defined elsewhere
-struct CustomerDetails {
-    string name;
-    string date;
-    int number_of_guests;
-    string ID;
-};
+
 
 class Reservations {
 private:
@@ -28,15 +22,13 @@ private:
     
 public:
     Reservations();
-    ~Reservations();
     
-    // Core methods (modified from your original)
+    
     void addReservation(struct CustomerDetails* c);
     CustomerDetails* getCustomerDetails(string ID);
     bool removeReservation(string ID);
     
-    // New/modified methods
-    bool reservationExists(string ID);  // Replaces findReservation
+    bool reservationExists(string ID);  
     vector<CustomerDetails*> getAllReservations(const string& whereClause = "");
     vector<CustomerDetails*> getReservationsByDate(string date);
     bool updateReservation(string ID, CustomerDetails* newData);
