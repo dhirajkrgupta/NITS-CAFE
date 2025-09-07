@@ -1,22 +1,46 @@
-#ifndef RESERVATION_H
-#define RESERVATION_H
+#ifndef RESERVATIONS_H
+#define RESERVATIONS_H
 
+#include <string>
 #include <vector>
-#include <customerdetails.h>
-using namespace std;
-class Reservations
-{
-private:
-    vector<struct CustomerDetails *> reservationList;
+#include <memory>
+#include <mysql_driver.h>
+#include <mysql_connection.h>
+#include <cppconn/statement.h>
+#include <cppconn/prepared_statement.h>
+#include <cppconn/resultset.h>
 
+using namespace std;
+using namespace sql;
+
+// Assuming you have this struct defined elsewhere
+struct CustomerDetails {
+    string name;
+    string date;
+    int number_of_guests;
+    string ID;
+};
+
+class Reservations {
+private:
+    Driver* driver;
+    unique_ptr<Connection> connection;
+    
 public:
     Reservations();
     ~Reservations();
-    void addReservation(struct CustomerDetails *c);
-    int findReservation(string ID);
+    
+    // Core methods (modified from your original)
+    void addReservation(struct CustomerDetails* c);
+    CustomerDetails* getCustomerDetails(string ID);
     bool removeReservation(string ID);
-    CustomerDetails* getCustomerDetails( string ID);
-    void updateFile();
+    
+    // New/modified methods
+    bool reservationExists(string ID);  // Replaces findReservation
+    vector<CustomerDetails*> getAllReservations(const string& whereClause = "");
+    vector<CustomerDetails*> getReservationsByDate(string date);
+    bool updateReservation(string ID, CustomerDetails* newData);
+    int getReservationCount();
 };
 
 #endif
