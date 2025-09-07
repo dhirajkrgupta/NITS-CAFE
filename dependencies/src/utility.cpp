@@ -170,7 +170,7 @@ void checkReservation(Reservations &r)
     pauseProgram();
     cout << ".";
     clearConsole();
-    if (r.findReservation(ID) != -1)
+    if (r.reservationExists(ID))
     {
         cout << "Status : Found" << endl;
         r.getCustomerDetails(ID)->print();
@@ -193,7 +193,6 @@ void cancelReservation(Reservations &r)
     if (r.removeReservation(ID))
     {
         cout << "Removed reservation successfully! \n";
-        r.updateFile();
     }
     else
     {
@@ -288,7 +287,7 @@ void takeFeedback(string ID)
     {
         getline(cin, feedback);
     }
-
+    
     cout << "Thank you for your feedback\n";
     fstream myFile;
     myFile.open("Data/feedbacks.txt", ios::app);

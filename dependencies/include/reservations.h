@@ -9,17 +9,12 @@
 #include <cppconn/statement.h>
 #include <cppconn/prepared_statement.h>
 #include <cppconn/resultset.h>
-
+#include "customerdetails.h"
 using namespace std;
 using namespace sql;
 
 // Assuming you have this struct defined elsewhere
-struct CustomerDetails {
-    string name;
-    string date;
-    int number_of_guests;
-    string ID;
-};
+
 
 class Reservations {
 private:

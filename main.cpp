@@ -59,7 +59,7 @@ cafe:
     cout << "Enter your Reservation ID: ";
     cin >> ID;
     clearConsole();
-    if (r.findReservation(ID) != -1)
+    if (r.reservationExists(ID))
     {
         string name = r.getCustomerDetails(ID)->name;
         string date = r.getCustomerDetails(ID)->date;
